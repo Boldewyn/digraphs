@@ -1829,24 +1829,37 @@ var Digraphs = new function() {
     }
   };
 
+  /**
+   * Fake a key event
+   */
   function fakeKey(event, chr) {
     var new_event = document.createEvent("KeyEvents");
-    // initKeyEvent(type, canBubble, cancelable, view, 
-    //              ctrlKey, altKey, shiftKey, metaKey, keyCode, charCode);
     new_event.initKeyEvent("keypress", true, true, event.view, 
                             false, false, false, false, 
                             0, chr.charCodeAt(0));
     event.target.dispatchEvent(new_event);
   };
 
+  /**
+   * Get the Unicode character for a digraph
+   *
+   * Returns the last entered character, if none was found
+   */
   function get_digraph() {
     if (that.di in rfc1345) {
       log(that.di+": "+rfc1345[that.di]);
       return rfc1345[that.di];
+    } else if (that.di.length === 2 && (that.di[1]+that.di[0] in rfc1345)) {
+      // detect inverse digraphs
+      log(that.di+" (I): "+rfc1345[that.di[1]+that.di[0]]);
+      return rfc1345[that.di[1]+that.di[0]];
     }
     return that.di.substring(that.di.length-1);
   };
 
+  /**
+   * Intercept keypress events
+   */
   function keyPressHandler(event) {
     if (that.di !== null) {
       that.di += String.fromCharCode(event.which);
