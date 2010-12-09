@@ -1862,7 +1862,17 @@ var Digraphs = new function() {
    */
   function keyPressHandler(event) {
     if (that.di !== null) {
-      that.di += String.fromCharCode(event.which);
+      var c = String.fromCharCode(event.which);
+      if (c.search(/[^ -~]/) > -1) {
+        // some non-printing ASCII (like DEL or ESC)
+        that.di = null;
+        return true;
+      } else if (event.ctrlKey || event.altKey || event.metaKey) {
+        // Ctrl sequence
+        that.di = null;
+        return true;
+      }
+      that.di += c;
       log(that.di);
       if (that.di.length === 2) {
         var id = get_digraph();
