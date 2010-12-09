@@ -1,12 +1,12 @@
 <RDF:RDF xmlns:em="http://www.mozilla.org/2004/em-rdf#"
          xmlns:RDF="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <RDF:Description RDF:about="urn:mozilla:install-manifest"
-    em:id="digraphs@boldewyn.github.com"
+    em:id="digraphs@boldewyn.de"
     em:name="Digraphs"
     em:version="1.0"
     em:creator="Manuel Strehl"
     em:description="Bring digraph support to FF"
-    em:homepageURL="http://boldewyn.github.com/digraphs/"
+    em:homepageURL="http://www.boldewyn.de/digraphs"
     em:iconURL="chrome://digraphs/content/digraphs.png">
     <em:targetApplication RDF:resource="rdf:#$n7FHg2"/>
   </RDF:Description>
