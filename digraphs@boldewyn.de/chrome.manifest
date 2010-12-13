@@ -1,5 +1,8 @@
 content digraphs chrome/content/
 
+locale digraphs en locale/en/
+locale digraphs de locale/de/
+
 overlay chrome://browser/content/browser.xul                        chrome://digraphs/content/overlay.xul
 overlay chrome://browser/content/bookmarks/bookmarksManager.xul     chrome://digraphs/content/overlay.xul
 overlay chrome://browser/content/bookmarks/bookmarksProperties.xul  chrome://digraphs/content/overlay.xul

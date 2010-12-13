@@ -1,18 +1,30 @@
-<RDF:RDF xmlns:em="http://www.mozilla.org/2004/em-rdf#"
-         xmlns:RDF="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <RDF:Description RDF:about="urn:mozilla:install-manifest"
+<RDF xmlns:em="http://www.mozilla.org/2004/em-rdf#"
+         xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <Description about="urn:mozilla:install-manifest"
     em:id="digraphs@boldewyn.de"
-    em:name="Digraphs"
     em:version="1.0"
     em:creator="Manuel Strehl"
-    em:description="Bring digraph support to FF"
     em:homepageURL="http://www.boldewyn.de/digraphs"
     em:iconURL="chrome://digraphs/content/digraphs.png">
-    <em:targetApplication RDF:resource="rdf:#$n7FHg2"/>
-  </RDF:Description>
+    <em:targetApplication resource="rdf:#$n7FHg2"/>
+    <em:localized>
+      <Description>
+        <em:locale>en</em:locale>
+        <em:name>Digraphs</em:name>
+        <em:description>Digraph support for Firefox (as known from Vim)</em:description>
+      </Description>
+    </em:localized>
+    <em:localized>
+      <Description>
+        <em:locale>de</em:locale>
+        <em:name>Digraphen</em:name>
+        <em:description>Digraph-Unterstützung für Firefox (wie aus Vim bekannt)</em:description>
+      </Description>
+    </em:localized>
+  </Description>
   <!-- Mozilla Firefox -->
-  <RDF:Description RDF:about="rdf:#$n7FHg2"
+  <Description about="rdf:#$n7FHg2"
                    em:id="{ec8030f7-c20a-464f-9b0e-13a3a9e97384}"
-                   em:minVersion="1.5"
+                   em:minVersion="3.0"
                    em:maxVersion="3.6.*" />
-</RDF:RDF>
+</RDF>
