@@ -3,20 +3,20 @@
   <Description about="urn:mozilla:install-manifest"
     em:id="digraphs@boldewyn.de"
     em:version="1.0"
-    em:creator="Manuel Strehl"
-    em:homepageURL="http://www.boldewyn.de/digraphs"
     em:iconURL="chrome://digraphs/content/digraphs.png">
     <em:targetApplication resource="rdf:#$n7FHg2"/>
     <em:localized>
-      <Description>
-        <em:locale>en</em:locale>
+      <Description em:locale="en">
+        <em:creator>Manuel Strehl</em:creator>
+        <em:homepageURL>http://www.boldewyn.de/digraphs</em:homepageURL>
         <em:name>Digraphs</em:name>
         <em:description>Digraph support for Firefox (as known from Vim)</em:description>
       </Description>
     </em:localized>
     <em:localized>
-      <Description>
-        <em:locale>de</em:locale>
+      <Description em:locale="de">
+        <em:creator>Manuel Strehl</em:creator>
+        <em:homepageURL>http://www.boldewyn.de/digraphs</em:homepageURL>
         <em:name>Digraphen</em:name>
         <em:description>Digraph-Unterstützung für Firefox (wie aus Vim bekannt)</em:description>
       </Description>
