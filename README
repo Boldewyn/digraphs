@@ -23,6 +23,6 @@ I N S T A L A T I O N :
 
 * Manually: Create a text file named "digraphs@boldewyn.de" in your Firefox
   profile’s "extension" folder. Its content is the absolute path to the
-  digraphs@boldeyn.de folder (including the final slash).
+  digraphs@boldeyn.de folder (including the final slash). Restart Firefox.
 
 * Automatically: TODO: Submit to addons.mozilla.org
