@@ -25,4 +25,4 @@ I N S T A L A T I O N :
   profile’s "extension" folder. Its content is the absolute path to the
   digraphs@boldeyn.de folder (including the final slash). Restart Firefox.
 
-* Automatically: TODO: Submit to addons.mozilla.org
+* Automatically: Install from https://addons.mozilla.org/firefox/addon/261969/ (needs yet to leave the sandbox)
