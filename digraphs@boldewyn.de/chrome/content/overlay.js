@@ -1845,17 +1845,30 @@ var Digraphs = new function() {
    *
    * Returns the last entered character, if none was found
    */
-  function get_digraph() {
-    if (that.di in rfc1345) {
-      log(that.di+": "+rfc1345[that.di]);
-      return rfc1345[that.di];
-    } else if (that.di.length === 2 && (that.di[1]+that.di[0] in rfc1345)) {
+  function get_digraph(di) {
+    if (di in rfc1345) {
+      log(di+": "+rfc1345[di]);
+      return rfc1345[di];
+    } else if (di.length === 2 && (di[1]+di[0] in rfc1345)) {
       // detect inverse digraphs
-      log(that.di+" (I): "+rfc1345[that.di[1]+that.di[0]]);
-      return rfc1345[that.di[1]+that.di[0]];
+      log(di+" (I): "+rfc1345[di[1]+di[0]]);
+      return rfc1345[di[1]+di[0]];
     }
-    return that.di.substring(that.di.length-1);
+    return null;
   };
+
+  /**
+   * Check, if the string has the potential to become a digraph
+   */
+  function may_be_digraph(di) {
+    var k;
+    for (k in rfc1345) {
+      if (k.length >= di.length && k.substring(0, di.length) == di) {
+        return true;
+      }
+    }
+    return false;
+  }
 
   /**
    * Intercept keypress events
@@ -1874,8 +1887,12 @@ var Digraphs = new function() {
       }
       that.di += c;
       log(that.di);
-      if (that.di.length === 2) {
-        var id = get_digraph();
+      if (that.di.length > 1) {
+        var id = get_digraph(that.di), maybe = false;
+        if (id == null) {
+          maybe = may_be_digraph(that.di);
+          id = thad.di.substring(that.di.length - 1)
+        }
         that.di = null;
         fakeKey(event, id);
       }
