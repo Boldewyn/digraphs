@@ -21,6 +21,7 @@
         <em:description>Digraph-Unterstützung für Firefox (wie aus Vim bekannt)</em:description>
       </Description>
     </em:localized>
+    <em:optionsURL>chrome://digraphs/content/options.xul</em:optionsURL>
   </Description>
   <!-- Mozilla Firefox -->
   <Description about="rdf:#$n7FHg2"

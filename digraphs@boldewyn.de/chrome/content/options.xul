@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<!DOCTYPE prefwindow SYSTEM "chrome://digraphs/locale/digraphs.dtd">
+<prefwindow title="&di.prefs;"
+  xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <prefpane label="&di.prefs;">
+    <preferences>
+      <preference id="digraphs-activate_key"
+        name="extensions.digraphs.activate_key" type="int" />
+      <preference id="digraphs-activate_mod"
+        name="extensions.digraphs.activate_mod" type="string" />
+    </preferences>
+
+    <groupbox>
+      <caption label="&di.activation_keystroke;"/>
+      <grid>
+        <columns>
+          <column flex="2"/>
+          <column flex="1"/>
+        </columns>
+        <rows>
+          <row>
+            <label value="Key value" control="ackey" />
+            <textbox id="ackey" preference="digraphs-activate_key" />
+          </row>
+          <row>
+            <label value="Meta key" control="acmod" />
+            <textbox id="acmod" preference="digraphs-activate_mod" />
+          </row>
+        </rows>
+      </grid>
+    </groupbox>
+  </prefpane>
+</prefwindow>
