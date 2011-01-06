@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Digraphs: Demo</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+    <script>
+    var digraphs, cur = "";
+    jQuery(function($){
+      $.getJSON("digraphs.json", function (data) {
+        digraphs = data;
+        $.each(digraphs, function (k, v) {
+          $("#all_digraphs ul").append("<li><a href='#"+k.replace("'", "&#x27;")+"'>"+
+                                          "<span class='key'>"+k+"</span>"+
+                                          "<span class='uni'>"+v.replace(/[\u0000-\u001f\u007F-\u009F]/, "-")+"</span>"+
+                                       "<"+"/a><"+"/li>");
+        });
+        set_selection();
+        $(document).keypress(function (e) {
+          cur += String.fromCharCode(e.which);
+          $('#ws_key').html(cur || "\u00A0");
+          if (cur in digraphs) {
+            $('#ws_uni').html(digraphs[cur].replace(/[\u0000-\u001f\u007F-\u009F]/, "[Control]"));
+            cur = "";
+          } else if (may_be_digraph(cur)) {
+            $('#ws_uni').html("\u00A0");
+          } else {
+            $('#ws_uni').html("<strong>doesn’t exist</strong>");
+            cur = "";
+          }
+          set_selection();
+        });
+      });
+    });
+    function may_be_digraph(di) {
+      for (var k in digraphs) {
+        if (k.length >= di.length && k.substring(0, di.length) == di) {
+          return true;
+        }
+      }
+      return false;
+    };
+    function filter(di) {
+      if (di === "" || di === undefined) {
+        return digraphs;
+      } else {
+        r = {};
+        $.each(digraphs, function (k, v) {
+          if (k.substring(0, di.length) === di) {
+            r[k] = v;
+          }
+        });
+        return r;
+      }
+    };
+    function set_selection() {
+      $("#sel_digraphs ul").html("");
+      if (cur === "") {
+        $('#all_digraphs').show();
+        $('#sel_digraphs').hide();
+      } else {
+        $('#all_digraphs').hide();
+        $('#sel_digraphs').show();
+        $.each(filter(cur), function (k, v) {
+          $("#sel_digraphs ul").append("<li><a href='#"+k.replace("'", "&#x27;")+"'>"+
+                                        "<span class='key'>"+k+"</span>"+
+                                        "<span class='uni'>"+v.replace(/[\u0000-\u001f\u007F-\u009F]/, "-")+"</span>"+
+                                   "<"+"/a><"+"/li>");
+      });
+      }
+    };
+    </script>
+    <style type="text/css">
+      article, hgroup, section {
+        display: block;
+      }
+      .digraphs li {
+        list-style: none;
+        padding: 0;
+        margin: 0 2em 1em 0;
+        float: left;
+        font-family: "DejaVu SansMono", Inconsolata, "Courier New", monospace;
+      }
+      .digraphs a {
+        text-decoration: none;
+        color: #333;
+      }
+      .digraphs a:hover {
+        border-bottom: 1px solid;
+      }
+      .key {
+        padding-right: .6718em;
+        color: #222;
+      }
+      #workspace {
+        width: 40em;
+        margin: 1em auto;
+        background: #f4f2f2;
+      }
+      #workspace p {
+        display: inline-block;
+        width: 4em;
+        height: 4em;
+        padding: 0 .4em;
+        margin: 0;
+        background: #ddd;
+        -moz-border-radius: .3em;
+        -webkit-border-radius: .3em;
+        border-radius: .3em;
+        text-align: center;
+        font: 4em/4em "Arial Unicode MS", "Microsoft Sans Serif", "Free Sans",
+                      "Gentium Plus", "Gentium Basic", "Gentium", "GentiumAlt", "DejaVu Sans",
+                      "DejaVu Serif", "Free Serif", "TITUS Cyberbit Basic",
+                      "Bitstream Cyberbit", "Bitstream CyberBase", "Doulos SIL",
+                      "Code2000", "Code2001";
+      }
+      #workspace p#ws_uni {
+        margin-left: .2em;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <a href="http://github.com/Boldewyn/digraphs/"><img style="position: absolute; top: 0; right: 0; border: 0;"
+         src="http://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png" alt="Fork me on GitHub"></a>
+      <figure style="float:left; margin: 0 1em 1em 0;">
+        <img src="https://github.com/Boldewyn/digraphs/raw/master/digraphs@boldewyn.de/chrome/content/digraphs.png"
+             alt="The addon’s icon">
+      </figure>
+      <hgroup>
+        <h1>Digraphs</h1>
+        <h2>Demo</h2>
+      </hgroup>
+      <section id="description">
+        <p>Press any key on your keyboard and see the magic of digraph selection take place.</p>
+        <p><em>Note:</em> With the plugin, there is an activation sequence needed (defaulting to <kbd>Ctrl-K</kbd>).
+          This is not the case on this demo page.</p>
+      </section>
+      <section id="workspace"><p id="ws_key">&nbsp;</p><p id="ws_uni">&nbsp;</p></section>
+      <section class="digraphs" id="all_digraphs">
+        <ul>
+        </ul>
+      </section>
+      <section class="digraphs" id="sel_digraphs">
+        <ul>
+        </ul>
+      </section>
+    </div>
+  </body>
+</html>
+
