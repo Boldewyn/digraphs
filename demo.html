@@ -17,7 +17,8 @@
         });
         set_selection();
         $(document).keypress(function (e) {
-          if (e.which > 31 && e.which < 127) {
+          if (e.which > 31 && e.which < 127 &&
+              ! e.ctrlKey && ! e.metaKey && ! e.altKey) {
             cur += String.fromCharCode(e.which);
             set_views();
             e.stopPropagation();
