@@ -20,11 +20,16 @@
           if (e.which > 31 && e.which < 127) {
             cur += String.fromCharCode(e.which);
             set_views();
+            e.stopPropagation();
+            e.preventDefault();
+            return false;
           }
+          return true;
         });
         $('.digraphs a').live('click', function () {
           cur = $(this).attr("href").substr(1);
           set_views();
+          return true;
         });
         if (window.location.hash.length > 2) {
           cur = window.location.hash.substr(1);
