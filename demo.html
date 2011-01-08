@@ -17,21 +17,37 @@
         });
         set_selection();
         $(document).keypress(function (e) {
-          cur += String.fromCharCode(e.which);
-          $('#ws_key').html(cur || "\u00A0");
-          if (cur in digraphs) {
-            $('#ws_uni').html(digraphs[cur].replace(/[\u0000-\u001f\u007F-\u009F]/, "[Control]"));
-            cur = "";
-          } else if (may_be_digraph(cur)) {
-            $('#ws_uni').html("\u00A0");
-          } else {
-            $('#ws_uni').html("<strong>doesn’t exist</strong>");
-            cur = "";
+          if (e.which > 31 && e.which < 127) {
+            cur += String.fromCharCode(e.which);
+            set_views();
           }
-          set_selection();
         });
+        $('.digraphs a').live('click', function () {
+          cur = $(this).attr("href").substr(1);
+          set_views();
+        });
+        if (window.location.hash.length > 2) {
+          cur = window.location.hash.substr(1);
+          console.log(window.location.hash);
+          console.log(window.location.hash.substr(1));
+          set_views();
+        }
       });
     });
+    function set_views() {
+      $('#ws_key').html(cur || "\u00A0");
+      if (cur in digraphs) {
+        $('#ws_uni').html(digraphs[cur].replace(/[\u0000-\u001f\u007F-\u009F]/, "<strong>[Control]</strong>")+
+                          "<em>U+"+digraphs[cur].charCodeAt(0)+"</em>");
+        cur = "";
+      } else if (may_be_digraph(cur)) {
+        $('#ws_uni').html("\u00A0");
+      } else {
+        $('#ws_uni').html("<strong>doesn’t exist</strong>");
+        cur = "";
+      }
+      set_selection();
+    };
     function may_be_digraph(di) {
       for (var k in digraphs) {
         if (k.length >= di.length && k.substring(0, di.length) == di) {
@@ -71,6 +87,9 @@
     };
     </script>
     <style type="text/css">
+      html {
+        overflow-y: scroll;
+      }
       article, hgroup, section {
         display: block;
       }
@@ -95,6 +114,7 @@
       #workspace {
         width: 40em;
         margin: 1em auto;
+        padding: 1em;
         background: #f4f2f2;
       }
       #workspace p {
@@ -113,9 +133,36 @@
                       "DejaVu Serif", "Free Serif", "TITUS Cyberbit Basic",
                       "Bitstream Cyberbit", "Bitstream CyberBase", "Doulos SIL",
                       "Code2000", "Code2001";
+        position: relative;
       }
       #workspace p#ws_uni {
-        margin-left: .2em;
+        margin-left: .4em;
+      }
+      #ws_key:before,
+      #ws_uni:before {
+        position: absolute;
+        top: 1em;
+        left: 1em;
+        font: .25em/1 sans-serif;
+        color: #999;
+      }
+      #workspace em {
+        position: absolute;
+        bottom: 1em;
+        right: 1em;
+        font: .25em/1 sans-serif;
+        color: #999;
+      }
+      #ws_key:before {
+        content: "Key strokes";
+      }
+      #ws_uni:before {
+        content: "Result";
+      }
+      #workspace p strong {
+        font: bold .5em/2em sans-serif;
+        white-space: nowrap;
+        color: #999;
       }
     </style>
   </head>
@@ -127,10 +174,17 @@
         <img src="https://github.com/Boldewyn/digraphs/raw/master/digraphs@boldewyn.de/chrome/content/digraphs.png"
              alt="The addon’s icon">
       </figure>
-      <hgroup>
-        <h1>Digraphs</h1>
-        <h2>Demo</h2>
-      </hgroup>
+      <head>
+        <hgroup>
+          <h1>Digraphs</h1>
+          <h2>Demo: Try Digraphs Yourself</h2>
+        </hgroup>
+        <nav>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+          </ul>
+        </nav>
+      </head>
       <section id="description">
         <p>Press any key on your keyboard and see the magic of digraph selection take place.</p>
         <p><em>Note:</em> With the plugin, there is an activation sequence needed (defaulting to <kbd>Ctrl-K</kbd>).
