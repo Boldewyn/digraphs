@@ -1,6 +1,165 @@
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote,
+ul, ol, dl, li, dt, dd,
+form, fieldset, pre, label, legend,
+a, abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+strong, sub, sup, tt, var, hr,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, dialog, figcaption, figure, footer, header,
+hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: 100%;
+  font-family: inherit;
+  vertical-align: baseline;
+}
+
+article, aside, dialog, figcaption, figure, footer, header,
+hgroup, menu, nav, section {
+  display: block;
+}
+
 html {
   overflow-y: scroll;
 }
-article, header, hgroup, section {
-  display: block;
+
+body {
+  font: 100%/1.25 "Droid Serif","DejaVu Serif",Times,serif;
+  color: #333;
+  background: #FAF9F2 url(baseline.png);
+}
+
+table {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+caption, td, th {
+  text-align: left;
+}
+
+h1, h2, h3 {
+  text-align: center;
+  font-style: italic;
+}
+
+h1 {
+  font-size:  2.0em;
+  line-height: 1.25;
+  margin-bottom: .625em;
+}
+
+h2 {
+  font-size:  2.0em;
+  line-height: 1.25;
+  margin-bottom: .625em;
+}
+
+h3 {
+  font-size:  1.25em;
+  line-height: 1.00;
+  margin-bottom: 1.00em;
+}
+
+abbr[title], dfn[title] {
+  cursor: help;
+}
+
+blockquote:before, blockquote:after {
+  content: "";
+}
+
+q:lang(en) {
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+q:lang(bar), q:lang(de) {
+  quotes: "\201E" "\201C" "\201A" "\2018";
+}
+
+q:before {
+  content: open-quote;
+}
+
+q:after {
+  content: close-quote;
+}
+
+em, i, var {
+  font-style: italic;
+}
+
+strong, b {
+  font-weight: bold;
+}
+
+sub, sup {
+  font-size: 0.84em;
+  /** This is needed, so that these two don't destroy the carefully
+   * arranged line height of surrounding elements. See
+   * <http://www.velvetblues.com/web-development-blog/superscripts-subscripts-uneven-line-height/>
+   */
+  line-height: 0;
+}
+
+sub {
+  vertical-align: sub;
+}
+
+sup {
+  vertical-align: super;
+}
+
+ins {
+  text-decoration: underline;
+}
+
+del {
+  text-decoration: line-through;
+}
+
+/* END RESET */
+
+section {
+  margin-bottom: 1.25em;
+}
+
+#global {
+  padding: 1.25em;
+  background: white url(digraphs.png) no-repeat 1.25em 1.25em;
+  margin: 0 auto;
+  max-width: 60em;
+}
+
+header h1 {
+  font-style: normal;
+  font-variant: small-caps;
+  letter-spacing: .2em;
+}
+
+nav ul {
+  margin: 1.25em auto;
+  text-align: center;
+  padding-left: 1.25em;
+}
+
+nav li {
+  display: inline;
+  margin: 0 1.25em 0 0;
+}
+
+a {
+  color: #903;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #f03;
+  border-bottom: 1px solid;
 }
