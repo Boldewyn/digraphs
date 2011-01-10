@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Digraphs</title>
+    <title>Digraphs: Documentation</title>
     <link rel="stylesheet" href="static/style.css" />
   </head>
   <body>
@@ -25,20 +25,61 @@
         <h3>About Digraphs</h3>
         <p>
           Digraphs, in this context, are a method to enter special
-          glyphs with only the use of ASCII characters.
+          glyphs with only the use of ASCII characters. A single digraph
+          is composed of two (or sometimes more) ASCII characters and
+          represents uniquely a certain Unicode codepoint.
+        </p>
+        <p class="samp">
+          <em>Example:</em> <samp>The digraph <code>AE</code> represents the
+          Unicode codepoint U+198 (<code>LATIN CAPITAL LETTER AE</code>): Æ</samp>
+        </p>
+        <p>
+          To distinguish digraphs from regular ASCII characters some introducing
+          has to occur. In Vim, the famous text editor, the <kbd>Ctrl-K</kbd>
+          sequence starts the digraph entering mode. This addon mimics that behaviour,
+          although the actual sequence is editable from the addon’s options menu.
         </p>
       </section>
       <section>
         <h3>Installation</h3>
-        <p></p>
+        <p>
+          You can install the addon simply from
+          <a href="https://addons.mozilla.org/firefox/addon/261969/">addons.mozilla.org</a>,
+          the official Firefox addon repository.
+        </p>
+        <p>
+          Alternatively, you can download the addon from
+          <a href="http://www.github.com/boldewyn/digraphs">GitHub</a>
+          and link to it in the Firefox profile folder as described in the
+          README file.
+        </p>
       </section>
       <section>
         <h3>Usage</h3>
-        <p></p>
+        <p>
+          The default initialization sequence is <kbd>Ctrl-K</kbd>. Just place the cursor
+          in a text field on any website (for example, <a href="http://google.com">the Google search</a>),
+          press <kbd>Ctrl-K</kbd> and the digraph to enter. The associated letter or
+          character will appear in the field.
+        </p>
       </section>
       <section>
         <h3>Configuration</h3>
-        <p></p>
+        <p>
+          In the settings menu of the addon (reachable via <em>Settings</em> → <em>Addons</em> → <em>Digraphs</em>)
+          you can set the initialization sequence by entering the key code and a meta key to be pressed.
+          <samp>For example, to have <kbd>Alt+M</kbd> start digraph detection, set the values to <code>77</code>
+          and <code>altKey</code>, respectively.</samp>
+        </p>
+      </section>
+      <section>
+        <h3>Further Information</h3>
+        <ul>
+          <li><a href="http://tools.ietf.org/html/rfc1345#section-3">RFC 1345</a> lists all available digraphs</li>
+          <li><a href="http://en.wikipedia.org/wiki/Unicode_input">Wikipedia: Unicode input</a> describes several methods
+            to enter Unicode characters</li>
+          <li><a href="http://vimdoc.sourceforge.net/htmldoc/digraph.html">Vim documentation about digraphs</a></li>
+        </ul>
       </section>
     </div>
   </body>

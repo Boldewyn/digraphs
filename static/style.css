@@ -163,3 +163,14 @@ a:hover {
   color: #f03;
   border-bottom: 1px solid;
 }
+
+kbd, code {
+  font-family: "DejaVu Sans Mono", "Bitstream Vera Sans Mono",
+               Menlo, "Liberation Mono", "Nimbus Mono L", Consolas,
+               "Lucida Console", "Lucida Sans Typewriter", Monaco,
+               "Courier New", Courier, monospace;
+}
+
+p+p {
+  text-indent: 1.25em;
+}
