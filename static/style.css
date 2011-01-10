@@ -1,0 +1,6 @@
+html {
+  overflow-y: scroll;
+}
+article, header, hgroup, section {
+  display: block;
+}

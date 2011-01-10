@@ -3,16 +3,17 @@
   <head>
     <meta charset="UTF-8">
     <title>Digraphs: Demo</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="static/style.css" />
+    <script src="static/jquery.js"></script>
     <script>
     var digraphs, cur = "";
     jQuery(function($){
       $.getJSON("digraphs.json", function (data) {
         digraphs = data;
         $.each(digraphs, function (k, v) {
-          $("#all_digraphs ul").append("<li><a href='#"+k.replace("'", "&#x27;")+"'>"+
+          $("#all_digraphs ul").append("<li title='"+v[1]+"'><a href='#"+k.replace("'", "&#x27;")+"'>"+
                                           "<span class='key'>"+k+"</span>"+
-                                          "<span class='uni'>"+v.replace(/[\u0000-\u001f\u007F-\u009F]/, "-")+"</span>"+
+                                          "<span class='uni'>"+v[0].replace(/[\u0000-\u001f\u007F-\u009F]/, "-")+"</span>"+
                                        "<"+"/a><"+"/li>");
         });
         set_selection();
@@ -43,13 +44,14 @@
     function set_views() {
       $('#ws_key').html(cur || "\u00A0");
       if (cur in digraphs) {
-        $('#ws_uni').html(digraphs[cur].replace(/[\u0000-\u001f\u007F-\u009F]/, "<strong>[Control]</strong>")+
-                          "<em>U+"+digraphs[cur].charCodeAt(0)+"</em>");
+        $('#ws_uni').html(digraphs[cur][0].replace(/[\u0000-\u001f\u007F-\u009F]/, "<strong>[Control]</strong>")+
+                          "<em>U+"+digraphs[cur][0].charCodeAt(0)+"</em>")
+                    .attr("title", digraphs[cur][1]);
         cur = "";
       } else if (may_be_digraph(cur)) {
-        $('#ws_uni').html("\u00A0");
+        $('#ws_uni').html("\u00A0").removeAttr("title");
       } else {
-        $('#ws_uni').html("<strong>doesn’t exist</strong>");
+        $('#ws_uni').html("<strong>doesn’t exist</strong>").removeAttr("title");
         cur = "";
       }
       set_selection();
@@ -84,21 +86,15 @@
         $('#all_digraphs').hide();
         $('#sel_digraphs').show();
         $.each(filter(cur), function (k, v) {
-          $("#sel_digraphs ul").append("<li><a href='#"+k.replace("'", "&#x27;")+"'>"+
+          $("#sel_digraphs ul").append("<li title='"+v[1]+"'><a href='#"+k.replace("'", "&#x27;")+"'>"+
                                         "<span class='key'>"+k+"</span>"+
-                                        "<span class='uni'>"+v.replace(/[\u0000-\u001f\u007F-\u009F]/, "-")+"</span>"+
+                                        "<span class='uni'>"+v[0].replace(/[\u0000-\u001f\u007F-\u009F]/, "-")+"</span>"+
                                    "<"+"/a><"+"/li>");
       });
       }
     };
     </script>
     <style type="text/css">
-      html {
-        overflow-y: scroll;
-      }
-      article, hgroup, section {
-        display: block;
-      }
       .digraphs li {
         list-style: none;
         padding: 0;
@@ -126,7 +122,7 @@
       #workspace p {
         display: inline-block;
         width: 4em;
-        height: 4em;
+        height: 2em;
         padding: 0 .4em;
         margin: 0;
         background: #ddd;
@@ -134,12 +130,13 @@
         -webkit-border-radius: .3em;
         border-radius: .3em;
         text-align: center;
-        font: 4em/4em "Arial Unicode MS", "Microsoft Sans Serif", "Free Sans",
+        font: 4em/2em "Arial Unicode MS", "Microsoft Sans Serif", "Free Sans",
                       "Gentium Plus", "Gentium Basic", "Gentium", "GentiumAlt", "DejaVu Sans",
                       "DejaVu Serif", "Free Serif", "TITUS Cyberbit Basic",
                       "Bitstream Cyberbit", "Bitstream CyberBase", "Doulos SIL",
                       "Code2000", "Code2001";
         position: relative;
+        white-space: pre;
       }
       #workspace p#ws_uni {
         margin-left: .4em;
@@ -180,7 +177,7 @@
         <img src="https://github.com/Boldewyn/digraphs/raw/master/digraphs@boldewyn.de/chrome/content/digraphs.png"
              alt="The addon’s icon">
       </figure>
-      <head>
+      <header>
         <hgroup>
           <h1>Digraphs</h1>
           <h2>Demo: Try Digraphs Yourself</h2>
@@ -190,7 +187,7 @@
             <li><a href="index.html">Home</a></li>
           </ul>
         </nav>
-      </head>
+      </header>
       <section id="description">
         <p>Press any key on your keyboard and see the magic of digraph selection take place.</p>
         <p><em>Note:</em> With the plugin, there is an activation sequence needed (defaulting to <kbd>Ctrl-K</kbd>).
