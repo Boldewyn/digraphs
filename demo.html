@@ -32,7 +32,7 @@
           return true;
         });
         $('.digraphs a').live('click', function () {
-          cur = $(this).attr("href").substr(1);
+          cur = $(this).attr("href").replace(/^[^#]*#/, '');
           set_views();
           return true;
         });
