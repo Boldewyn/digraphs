@@ -13,6 +13,7 @@
     jQuery(function($){
       $.getJSON("digraphs.json", function (data) {
         digraphs = data;
+        $("#all_digraphs").html("<ul></ul>");
         $.each(digraphs, function (k, v) {
           $("#all_digraphs ul").append("<li title='"+v[1]+"'><a href='#"+k.replace("'", "&#x27;")+"'>"+
                                           "<span class='key'>"+k+"</span>"+
@@ -198,8 +199,9 @@
       </section>
       <section id="workspace"><p id="ws_key">&nbsp;</p><p id="ws_uni">&nbsp;</p></section>
       <section class="digraphs" id="all_digraphs">
-        <ul>
-        </ul>
+        <p style="text-align: center; padding: 2.5em;">
+          <img src="static/load.gif" alt="Loading digraphs..." />
+        </p>
       </section>
       <section class="digraphs" id="sel_digraphs">
         <ul>
