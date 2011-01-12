@@ -123,9 +123,11 @@
         margin: 1.25em auto;
         padding: 1.25em;
         background: #ddd;
+        position: relative;
+        overflow: auto;
       }
       #workspace p {
-        display: inline-block;
+        float: left;
         width: 4em;
         height: 1.875em;
         padding: 0 .4em;
@@ -141,24 +143,23 @@
                       "DejaVu Serif", "Free Serif", "TITUS Cyberbit Basic",
                       "Bitstream Cyberbit", "Bitstream CyberBase", "Doulos SIL",
                       "Code2000", "Code2001";
-        position: relative;
         white-space: pre;
       }
       #workspace p#ws_uni {
-        margin-left: .38em;
+        float: right;
       }
       #ws_key:before,
       #ws_uni:before {
         position: absolute;
-        top: 1em;
-        left: 1em;
+        top: 2.25em;
+        left: 2.25em;
         font: .25em/1 sans-serif;
         color: #999;
       }
       #workspace em {
         position: absolute;
-        bottom: 1em;
-        right: 1em;
+        bottom: 2.25em;
+        right: 2.25em;
         font: .25em/1 sans-serif;
         color: #999;
       }
