@@ -1,4 +1,6 @@
-var rfc1345 = {
+var Digraphs = new function() {
+
+  var rfc1345 = {
   "SP":     "\u0020", "Nb":     "\u0023", "DO":     "\u0024", "At":     "\u0040",
   "<(":     "\u005b", "//":     "\u005c", ")>":     "\u005d", "'>":     "\u005e",
   "'!":     "\u0060", "(!":     "\u007b", "!!":     "\u007c", "!)":     "\u007d",
@@ -452,9 +454,8 @@ var rfc1345 = {
   "f(":     "\ue01d", "ed":     "\ue01e", "am":     "\ue01f", "pm":     "\ue020",
   "Tel":    "\ue021", "a+:":    "\ue022", "Fl":     "\ue023", "GF":     "\ue024",
   ">V":     "\ue025", "!*":     "\ue026", "?*":     "\ue027", "J<":     "\ue028"
-};
+  };
 
-var Digraphs = new function() {
   var that = this;
   var loglevel = 1;
   var prefs = Components.classes["@mozilla.org/preferences-service;1"]

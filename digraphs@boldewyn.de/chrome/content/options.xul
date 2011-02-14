@@ -25,7 +25,15 @@
           </row>
           <row>
             <label value="Meta key" control="acmod" />
-            <textbox id="acmod" preference="digraphs-activate_mod" />
+            <!--textbox id="acmod" preference="digraphs-activate_mod" /-->
+            <menulist id="acmod" sizetopopup="always" preference="digraphs-activate_mod">
+              <menupopup>
+                <menuitem label="Shift" value="shiftKey"/>
+                <menuitem label="Ctrl" value="ctrlKey"/>
+                <menuitem label="Alt" value="altKey"/>
+                <menuitem label="Meta" value="metaKey"/>
+              </menupopup>
+            </menulist>
           </row>
         </rows>
       </grid>
