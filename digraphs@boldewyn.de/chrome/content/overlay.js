@@ -457,7 +457,7 @@ var Digraphs = new function() {
   };
 
   var that = this;
-  var loglevel = 1;
+  var loglevel = 0;
   var prefs = Components.classes["@mozilla.org/preferences-service;1"]
                         .getService(Components.interfaces.nsIPrefService)
                         .getBranch("extensions.digraphs.");
