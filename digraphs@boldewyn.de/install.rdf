@@ -2,8 +2,10 @@
          xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <Description about="urn:mozilla:install-manifest"
     em:id="digraphs@boldewyn.de"
-    em:version="1.0"
+    em:type="2"
+    em:version="1.1"
     em:iconURL="chrome://digraphs/content/digraphs.png">
+    <em:name>Digraphs</em:name>
     <em:targetApplication resource="rdf:#$n7FHg2"/>
     <em:localized>
       <Description em:locale="en">
