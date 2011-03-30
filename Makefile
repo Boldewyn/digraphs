@@ -6,7 +6,7 @@ all: digraphs@boldewyn.de.xpi
 
 digraphs@boldewyn.de.xpi:
 	cd digraphs@boldewyn.de; \
-	zip -r ../digraphs@boldewyn.de.xpi *
+	zip -r ../digraphs@boldewyn.de.xpi $$(git ls-files)
 
 clean:
 	rm digraphs@boldewyn.de.xpi
