@@ -3,7 +3,7 @@
   <Description about="urn:mozilla:install-manifest"
     em:id="digraphs@boldewyn.de"
     em:type="2"
-    em:version="1.2"
+    em:version="1.3"
     em:iconURL="chrome://digraphs/content/digraphs.png">
     <em:name>Digraphs</em:name>
     <em:targetApplication resource="rdf:#$n7FHg2"/>
@@ -29,5 +29,5 @@
   <Description about="rdf:#$n7FHg2"
                    em:id="{ec8030f7-c20a-464f-9b0e-13a3a9e97384}"
                    em:minVersion="3.0"
-                   em:maxVersion="4.0.*" />
+                   em:maxVersion="5.0.*" />
 </RDF>
